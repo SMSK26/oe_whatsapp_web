@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="oe_whatsapp_web_wizard_view_form" model="ir.ui.view">
+        <field name="name">oe.whatsapp.web.wizard.form</field>
+        <field name="model">oe.whatsapp.web.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Send WhatsApp Message">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="phone" placeholder="e.g. 965xxxxxxxx (no +, no spaces)"/>
+                    </group>
+                    <group string="Message"/>
+                        <field name="message" nolabel="1" placeholder="Type your message..."/>
+                </sheet>
+                <footer>
+                    <button name="action_send" type="object"
+                            string="Open WhatsApp Web" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_oe_whatsapp_web_wizard" model="ir.actions.act_window">
+        <field name="name">Send WhatsApp Message</field>
+        <field name="res_model">oe.whatsapp.web.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">form,list</field>
+    </record>
+</odoo>
